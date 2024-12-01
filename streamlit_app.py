@@ -20,9 +20,25 @@ st.title("Daily Energy Consumption and Cost Tracker")
 # Sidebar for user inputs
 st.sidebar.header("Filter Options")
 
-# Date selection
+# Get unique dates
 unique_dates = sorted(data['Date'].unique())
-selected_date = st.sidebar.selectbox("Select a Day", unique_dates)
+
+# Session state to track current date index
+if "date_index" not in st.session_state:
+    st.session_state.date_index = 0
+
+# Navigation buttons for date selection
+col1, col2, col3 = st.sidebar.columns([1, 2, 1])
+with col1:
+    if st.button("◀ Previous"):
+        st.session_state.date_index = max(0, st.session_state.date_index - 1)
+with col3:
+    if st.button("Next ▶"):
+        st.session_state.date_index = min(len(unique_dates) - 1, st.session_state.date_index + 1)
+
+# Display the currently selected date
+selected_date = unique_dates[st.session_state.date_index]
+st.sidebar.write(f"Selected Date: **{selected_date}**")
 
 # Metric selection
 metric = st.sidebar.radio(
