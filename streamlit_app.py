@@ -52,7 +52,7 @@ filtered_data = data[data['Date'] == selected_date]
 total = sum(filtered_data[metric])
 
 # Display the filtered graph
-fig = px.line(
+fig = px.bar(
     filtered_data,
     x="Start",
     y=metric,
