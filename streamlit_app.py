@@ -30,7 +30,7 @@ if "date_index" not in st.session_state:
 # Navigation buttons for date selection
 col1, col2, col3 = st.sidebar.columns([1, 2, 1])
 with col1:
-    if st.button("◀ Previous"):
+    if st.button("◀ Prev"):
         st.session_state.date_index = max(0, st.session_state.date_index - 1)
 with col3:
     if st.button("Next ▶"):
