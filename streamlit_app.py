@@ -50,12 +50,14 @@ metric = st.sidebar.radio(
 filtered_data = data[data['Date'] == selected_date]
 
 total = sum(filtered_data[metric])
+max = max(data[metric])
 
 # Display the filtered graph
 fig = px.bar(
     filtered_data,
     x="Start",
     y=metric,
+    range_y=[0,max],
     title=f"{metric} on {selected_date}: {total}",
     labels={"Start": "Time", metric: metric}
 )
