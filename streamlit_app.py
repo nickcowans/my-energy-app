@@ -57,9 +57,10 @@ fig = px.bar(
     x="Start",
     y=metric,
     title=f"{metric} on {selected_date}: {total}",
-    labels={"Start": "Time", metric: metric},
-    markers=True
+    labels={"Start": "Time", metric: metric}
 )
+
+# markers=True
 
 st.plotly_chart(fig)
 
